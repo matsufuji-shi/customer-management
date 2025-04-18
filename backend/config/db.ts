@@ -7,4 +7,13 @@ const db = mysql.createPool({
     database: "company"
 });
 
-module.exports = db;
+db.connect((err:string) => {
+  if (err) {
+    console.error('データベース接続エラー:', err);
+    process.exit(1);
+  } else {
+    console.log('データベース接続成功');
+  }
+});
+
+export default db;
